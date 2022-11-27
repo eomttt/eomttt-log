@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 
 const Header = ({ className }: HeaderProps) => (
-  <header className={`h-header ${className}`}>
+  <header className={`h-header bg-white ${className}`}>
     <Content className="flex justify-between items-center">
       <h1>Eomttt Log</h1>
       <section>
