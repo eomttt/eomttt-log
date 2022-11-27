@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => (
   <>
     <Header className="flex justify-center w-full fixed" />
-    <Main className="flex justify-center w-full pt-header">{children}</Main>
+    <Main className="flex justify-center w-full pt-content">{children}</Main>
   </>
 );
 

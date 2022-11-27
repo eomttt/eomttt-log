@@ -10,7 +10,7 @@ interface PostProps {
 export default function Post({ postData }: PostProps) {
   return (
     <Layout>
-      <PostComponent postContent={postData.contentHtml} />
+      <PostComponent className="px-4" postContent={postData.contentHtml} />
     </Layout>
   );
 }

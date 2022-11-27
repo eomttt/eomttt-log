@@ -1,11 +1,16 @@
 import Link from 'next/link';
+import { PostType } from '../../../lib/post';
 import ListItem from './ListItem';
 
-const List = () => (
+interface ListProps {
+  posts: PostType[];
+}
+
+const List = ({ posts }: ListProps) => (
   <>
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(it => (
-      <Link key={it} href={`/contents/${it}`}>
-        <ListItem />
+    {posts.map(post => (
+      <Link key={post.id} href={`/posts/${post.id}`}>
+        <ListItem post={post} />
       </Link>
     ))}
   </>

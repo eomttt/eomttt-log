@@ -8,7 +8,7 @@ interface MainProps {
 
 const Main = ({ className, children }: MainProps) => (
   <main className={className}>
-    <Content>{children}</Content>
+    <Content className="max-w-content">{children}</Content>
   </main>
 );
 

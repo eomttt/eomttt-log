@@ -1,9 +1,10 @@
 interface PostProps {
+  className?: string;
   postContent: string;
 }
 
-const Post = ({ postContent }: PostProps) => (
-  <article className="prose max-w-none">
+const Post = ({ className, postContent }: PostProps) => (
+  <article className={`prose max-w-none ${className}`}>
     <div dangerouslySetInnerHTML={{ __html: postContent }} />
   </article>
 );

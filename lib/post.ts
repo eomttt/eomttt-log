@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 import path from 'path';
 import * as fs from 'fs';
 import matter from 'gray-matter';
@@ -8,11 +11,12 @@ export interface PostType {
   id: string;
   contentHtml: string;
   title?: string;
+  content?: string;
   date?: string;
 }
 
 export async function getPostData(id: string): Promise<PostType> {
-  const fullPath = path.join('files', `${id}.md`);
+  const fullPath = path.join('posts', `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
@@ -28,4 +32,18 @@ export async function getPostData(id: string): Promise<PostType> {
     contentHtml,
     ...matterResult.data,
   };
+}
+
+export async function getPosts() {
+  const postList = [];
+  const files = fs.readdirSync('posts');
+
+  const ids = files.map(file => file.replace('.md', ''));
+
+  for (const id of ids) {
+    const post = await getPostData(id);
+    postList.push(post);
+  }
+
+  return postList;
 }

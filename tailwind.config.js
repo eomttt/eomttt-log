@@ -7,10 +7,13 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        'header': '56px',
+        'header': '64px',
       },
       padding: {
-        'header': '56px'
+        'content': '76px',
+      },
+      maxWidth: {
+        'content': '64rem',
       }
     },
   },
