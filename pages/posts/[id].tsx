@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { PostType, getPostData } from '../../lib/post';
 import { Layout } from '../../src/layout';
 import { Post as PostComponent } from '../../src/post';
@@ -9,9 +10,18 @@ interface PostProps {
 
 export default function Post({ postData }: PostProps) {
   return (
-    <Layout>
-      <PostComponent className="px-4" postContent={postData.contentHtml} />
-    </Layout>
+    <>
+      <Head>
+        <title>{postData.title}</title>
+        <meta name="title" content={postData.title} />
+        <meta name="description" content={postData.content} />
+        <meta property="og:title" content={postData.title} />
+        <meta property="og:type" content="website" />
+      </Head>
+      <Layout>
+        <PostComponent className="px-4" postContent={postData.contentHtml} />
+      </Layout>
+    </>
   );
 }
 
