@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { GITHUB_URL, LINKEDIN_URL } from '../constant/link';
 import Content from './Content';
@@ -12,9 +13,17 @@ const Header = ({ className }: HeaderProps) => (
       <h1 className="font-bold text-3xl">
         <Link href="/">Eomttt Log</Link>
       </h1>
-      <section>
-        <a href={GITHUB_URL}>github</a>
-        <a href={LINKEDIN_URL}>linked in</a>
+      <section className="flex gap-3 items-center">
+        <Link href={GITHUB_URL} passHref legacyBehavior>
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+            <Image width={20} height={20} alt="github icon" src="/github.png" />
+          </a>
+        </Link>
+        <Link href={LINKEDIN_URL} passHref legacyBehavior>
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">
+            <Image width={20} height={20} alt="linkedin icon" src="/linkedin.png" />
+          </a>
+        </Link>
       </section>
     </Content>
   </header>
