@@ -38,7 +38,7 @@ export async function getPosts() {
   const postList = [];
   const files = fs.readdirSync('posts');
 
-  const ids = files.map(file => file.replace('.md', ''));
+  const ids = files.reverse().map(file => file.replace('.md', ''));
 
   for (const id of ids) {
     const post = await getPostData(id);

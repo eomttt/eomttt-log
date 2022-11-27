@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { PostType, getPostData } from '../../lib/post';
+import { PostType, getPostData, getPosts } from '../../lib/post';
 import { Layout } from '../../src/layout';
 import { Post as PostComponent } from '../../src/post';
 
@@ -26,14 +26,15 @@ export default function Post({ postData }: PostProps) {
 }
 
 export async function getStaticPaths() {
+  const postList = await getPosts();
+  const paths = postList.map(post => ({
+    params: {
+      id: `${post.id}`,
+    },
+  }));
+
   return {
-    paths: [
-      {
-        params: {
-          id: '1',
-        },
-      },
-    ],
+    paths,
     fallback: false,
   };
 }
