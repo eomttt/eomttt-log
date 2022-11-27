@@ -1,7 +1,10 @@
+import { Layout } from '../src/layout';
+import { List } from '../src/list';
+
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <Layout>
+      <List />
+    </Layout>
   );
 }
