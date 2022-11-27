@@ -4,14 +4,14 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-export interface ContentData {
+export interface PostType {
   id: string;
   contentHtml: string;
   title?: string;
   date?: string;
 }
 
-export async function getContentData(id: string): Promise<ContentData> {
+export async function getPostData(id: string): Promise<PostType> {
   const fullPath = path.join('files', `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 

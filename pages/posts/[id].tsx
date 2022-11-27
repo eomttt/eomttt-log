@@ -1,17 +1,16 @@
 import { GetStaticProps } from 'next';
-import { ContentData, getContentData } from '../../lib/content';
+import { PostType, getPostData } from '../../lib/post';
 import { Layout } from '../../src/layout';
+import { Post as PostComponent } from '../../src/post';
 
-interface ContentProps {
-  contentData: ContentData;
+interface PostProps {
+  postData: PostType;
 }
 
-export default function Content({ contentData }: ContentProps) {
+export default function Post({ postData }: PostProps) {
   return (
     <Layout>
-      <article className="prose max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: contentData.contentHtml }} />
-      </article>
+      <PostComponent postContent={postData.contentHtml} />
     </Layout>
   );
 }
@@ -31,11 +30,11 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params?.id) {
-    const contentData = await getContentData(params.id as string);
+    const postData = await getPostData(params.id as string);
 
     return {
       props: {
-        contentData,
+        postData,
       },
     };
   }
