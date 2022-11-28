@@ -1,5 +1,6 @@
 const Utterances = () => (
   <section
+    className="[&>div]:max-w-full"
     ref={elem => {
       if (!elem) {
         return;
