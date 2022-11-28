@@ -16,6 +16,7 @@ export default function Post({ postData }: PostProps) {
         <meta name="title" content={postData.title} />
         <meta name="description" content={postData.content} />
         <meta property="og:title" content={postData.title} />
+        <meta property="og:description" content={postData.contentHtml} />
       </Head>
       <Layout>
         <PostComponent className="px-4" postContent={postData.contentHtml} />
