@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { PostType, getPostData, getPosts } from '../../lib/post';
 import { Layout } from '../../src/layout';
-import { Post as PostComponent } from '../../src/post';
+import { Post as PostComponent, Utterance } from '../../src/post';
 
 interface PostProps {
   postData: PostType;
@@ -20,6 +20,7 @@ export default function Post({ postData }: PostProps) {
       </Head>
       <Layout>
         <PostComponent className="px-4" postContent={postData.contentHtml} />
+        <Utterance />
       </Layout>
     </>
   );
